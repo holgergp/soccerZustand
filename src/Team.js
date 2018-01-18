@@ -10,9 +10,9 @@ import ContentEditable from 'react-contenteditable';
  * Only `beginDrag` function is required.
  */
 const teamSource = {
-  beginDrag(props, monitor, component) {
+  beginDrag(props, monitor) {
     // Return the data describing the dragged item
-    return { sourceId: component.props.team.id };
+    return { sourceId: props.team.id };
   },
 
   endDrag(props, monitor) {
