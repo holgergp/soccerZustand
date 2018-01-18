@@ -1,5 +1,5 @@
 import { DragSource } from 'react-dnd';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { ItemTypes } from './DndItemTypes';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -31,12 +31,12 @@ const teamSource = {
 /**
  * Specifies the props to inject into your component.
  */
-function collect(connect, monitor) {
+const collect = (connect, monitor) => {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   };
-}
+};
 
 const propTypes = {
   positionNumber: PropTypes.number.isRequired,
@@ -98,10 +98,9 @@ class Team extends Component {
         </div>
       </div>
     );
-
-    function onChange(text) {
-      updateTeamname(team, text);
-    }
+  }
+  onChange(text) {
+    updateTeamname(team, text);
   }
 }
 
