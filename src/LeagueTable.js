@@ -5,6 +5,7 @@ import { DragDropContext } from 'react-dnd';
 import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { SAMPLE_LEAGUE_TABLE } from './SampleData';
+import { Panel, Col } from 'react-bootstrap';
 
 const findTeamPosition = (teamId, positions) => {
   const foundPosition = positions
@@ -67,14 +68,16 @@ class LeagueTable extends Component {
     ));
 
     return (
-      <div className="col-md-6">
-        <div className="panel panel-primary">
-          <div className="panel-heading">
-            <h3 className="panel-title">Ligatabelle zum Selberstecken</h3>
-          </div>
+      <Col md={6}>
+        <Panel bsStyle="primary">
+          <Panel.Heading>
+            <Panel.Title componentClass="h3">
+              Ligatabelle zum Selberstecken
+            </Panel.Title>
+          </Panel.Heading>
           <div className="panel-body">{positionNodes}</div>
-        </div>
-      </div>
+        </Panel>
+      </Col>
     );
   };
 

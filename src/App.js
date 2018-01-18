@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 import './App.css';
+import { Row, Grid } from 'react-bootstrap';
 import LeagueTable from './LeagueTable';
 
 class App extends Component {
   render() {
     return (
       <div className="index">
-        <div className="container">
-          <div className="row">
-            <LeagueTable  />
-          </div>
-        </div>
+        <Grid>
+          <Row>
+            <LeagueTable />
+          </Row>
+        </Grid>
       </div>
     );
   }
