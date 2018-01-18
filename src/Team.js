@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { ItemTypes } from './DndItemTypes';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import ContentEditable from 'react-wysiwyg';
+import ContentEditable from 'react-contenteditable';
 
 /**
  * Specifies the drag source contract.
@@ -38,17 +38,7 @@ const collect = (connect, monitor) => {
   };
 };
 
-const propTypes = {
-  positionNumber: PropTypes.number.isRequired,
-  updateTeamname: PropTypes.func.isRequired,
-  team: PropTypes.object.isRequired,
-
-  // Injected by React DnD:
-  isDragging: PropTypes.bool.isRequired,
-  connectDragSource: PropTypes.func.isRequired
-};
-
-function calculatePositionCssClass(positionNumber) {
+const calculatePositionCssClass = positionNumber => {
   if (positionNumber === 1) {
     return 'tabellenfuehrerClass tabelleClass';
   }
@@ -66,12 +56,24 @@ function calculatePositionCssClass(positionNumber) {
   } else {
     return 'abstiegClass tabelleClass';
   }
-}
+};
 
 class Team extends Component {
-  render() {
+  static propTypes = {
+    positionNumber: PropTypes.number.isRequired,
+    updateTeamname: PropTypes.func.isRequired,
+    team: PropTypes.object.isRequired,
+
+    // Injected by React DnD:
+    isDragging: PropTypes.bool.isRequired,
+    connectDragSource: PropTypes.func.isRequired
+  };
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+  render = () => {
     const positionNumber = this.props.positionNumber;
-    const updateTeamname = this.props.updateTeamname;
     const team = this.props.team;
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
@@ -83,27 +85,22 @@ class Team extends Component {
     );
     return connectDragSource(
       <div className={classes} style={{ cursor: 'pointer' }}>
-        <div>
           <ContentEditable
-            tagName="div"
-            onChange={onChange}
+            onChange={this.onChange}
             className="textPointer"
             html={team.name}
-            autofocus={true}
+            autoFocus={true}
             maxLength={200}
-            editing={this.props.team.editing}
-            preventStyling
-            noLinebreaks
+            disabled={!this.props.team.editing}
           />
-        </div>
       </div>
     );
-  }
-  onChange(text) {
-    updateTeamname(team, text);
-  }
+  };
+
+  onChange(evt) {
+    this.props.updateTeamname(this.props.team, evt.target.value);
+  };
 }
 
-Team.propTypes = propTypes;
 
 export default DragSource(ItemTypes.TEAM, teamSource, collect)(Team);

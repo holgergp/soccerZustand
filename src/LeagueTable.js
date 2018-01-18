@@ -34,7 +34,9 @@ class LeagueTable extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { ...this.getInitialState() };
+    this.state = this.getInitialState();
+    this.swapPositions = this.swapPositions.bind(this);
+    this.updateTeamname = this.updateTeamname.bind(this);
   }
 
   getInitialState() {
@@ -54,16 +56,13 @@ class LeagueTable extends Component {
     localStorage.state = JSON.stringify(this.state);
   }
 
-  render() {
-    const swapPositions = this.swapPositions;
-    const updateTeamname = this.updateTeamname;
-
+  render = () => {
     const positionNodes = this.state.positions.map(posIter => (
       <Position
         position={posIter}
         key={posIter.position}
-        swapPositions={swapPositions}
-        updateTeamname={updateTeamname}
+        swapPositions={this.swapPositions}
+        updateTeamname={this.updateTeamname}
       />
     ));
 
@@ -77,7 +76,7 @@ class LeagueTable extends Component {
         </div>
       </div>
     );
-  }
+  };
 
   swapPositions = (sourceTeamId, targetTeamId) => {
     let updatedPositions = this.state.positions;
@@ -108,7 +107,7 @@ class LeagueTable extends Component {
       positions: updatedPositions,
       newTeam: {}
     });
-  }
+  };
 
   updateTeamname = (team, updatedText) => {
     const positions = this.state.positions;
@@ -129,7 +128,7 @@ class LeagueTable extends Component {
       positions: positions,
       newTeam: {}
     });
-  }
+  };
 }
 
 export default DragDropContext(HTML5Backend)(LeagueTable);
