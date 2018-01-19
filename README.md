@@ -4,7 +4,7 @@
 This is be a rewrite of [SoccerReact](https://github.com/holgergp/soccerReact) using React 16 and Create React App.
 
 I've used Node 8.4 while developing this. 
-Start with ´yarn start´.
+Start with `yarn start`.
 See the result inyour Browser: http://localhost:3000
 
-Run the test with ´yarn test´.
+Run the test with `yarn test`.
