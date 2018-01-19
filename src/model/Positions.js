@@ -1,14 +1,11 @@
 export default class Positions {
   static _findTeamRank = (teamId, positions) => {
-    const zeroBasedIndex =  positions.findIndex(position => position.team.id === teamId);
+    const zeroBasedIndex = positions.findIndex(team => team.id === teamId);
     return zeroBasedIndex + 1;
   };
 
   static _findTeam = (teamId, positions) => {
-    const foundPosition = positions.find(
-      position => position.team.id === teamId
-    );
-    return foundPosition.team;
+    return positions.find(team => team.id === teamId);
   };
 
   static recalculateSwappedPositions = (
@@ -24,16 +21,8 @@ export default class Positions {
     const sourceTeam = Positions._findTeam(sourceTeamId, clonedPositions);
     const targetTeam = Positions._findTeam(targetTeamId, clonedPositions);
 
-    const newTarget = {
-      team: sourceTeam
-    };
-
-    const newSource = {
-      team: targetTeam
-    };
-
-    clonedPositions[targetRank - 1] = newTarget;
-    clonedPositions[sourceRank - 1] = newSource;
+    clonedPositions[targetRank - 1] = sourceTeam;
+    clonedPositions[sourceRank - 1] = targetTeam;
     return clonedPositions;
   };
 
@@ -49,11 +38,7 @@ export default class Positions {
     //team.editing = false;
     team.name = updatedText;
 
-    const updatedPosition = {
-      team
-    };
-
-    clonedPositions[teamRank - 1] = updatedPosition;
+    clonedPositions[teamRank - 1] = team;
     return clonedPositions;
   };
 }
