@@ -5,6 +5,6 @@ This is be a rewrite of [SoccerReact](https://github.com/holgergp/soccerReact) u
 
 I've used Node 8.4 while developing this. 
 Start with ´yarn start´.
-See the result in (http://localhost:3000)
+See the result inyour Browser: http://localhost:3000
 
 Run the test with ´yarn test´.
