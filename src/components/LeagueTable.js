@@ -8,7 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { SAMPLE_LEAGUE_TABLE } from '../constants/SampleData';
 import { Panel, Col } from 'react-bootstrap';
 
-class LeagueTable extends Component {
+export class LeagueTable extends Component {
   defaultState = {
     positions: SAMPLE_LEAGUE_TABLE,
     newTeam: {}
