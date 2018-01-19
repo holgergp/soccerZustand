@@ -37,7 +37,7 @@ class Position extends Component {
         <span>
           <Team
             team={team}
-            positionNumber={rank}
+            rank={rank}
             updateTeamname={updateTeamname}
             swapPositions={swapPositions}
           />

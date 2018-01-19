@@ -1,6 +1,5 @@
 exports.SAMPLE_LEAGUE_TABLE = [
   {
-    rank: 1,
     team: {
       name: 'Borussia Mönchengladbach',
       editing: true,
@@ -8,7 +7,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 2,
     team: {
       name: 'Borussia Dortmund',
       editing: true,
@@ -16,7 +14,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 3,
     team: {
       name: 'FC Bayern München',
       editing: true,
@@ -24,7 +21,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 4,
     team: {
       name: 'VFL Wolfsburg',
       editing: true,
@@ -32,7 +28,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 5,
     team: {
       name: 'Bayer Leverkusen',
       editing: true,
@@ -48,7 +43,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 7,
     team: {
       name: 'Hertha BSC Berlin',
       editing: true,
@@ -56,7 +50,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 8,
     team: {
       name: '1. FC Köln',
       editing: true,
@@ -64,7 +57,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 9,
     team: {
       name: 'FC Ingolstadt',
       editing: true,
@@ -72,7 +64,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 10,
     team: {
       name: 'Darmstadt 98',
       editing: true,
@@ -80,7 +71,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 11,
     team: {
       name: 'Hamburger SV',
       editing: true,
@@ -88,7 +78,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 12,
     team: {
       name: 'Eintracht Frankfurt',
       editing: true,
@@ -96,7 +85,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 13,
     team: {
       name: 'Werder Bremen',
       editing: true,
@@ -104,7 +92,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 14,
     team: {
       name: 'Hoffenheim',
       editing: true,
@@ -112,7 +99,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 15,
     team: {
       name: 'FC Augsburg',
       editing: true,
@@ -120,7 +106,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 16,
     team: {
       name: 'Hannover 96',
       editing: true,
@@ -128,7 +113,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 17,
     team: {
       name: 'Mainz 05',
       editing: true,
@@ -136,7 +120,6 @@ exports.SAMPLE_LEAGUE_TABLE = [
     }
   },
   {
-    rank: 18,
     team: {
       name: 'VFB Stuttgart',
       editing: true,

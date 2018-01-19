@@ -42,7 +42,7 @@ export class LeagueTable extends Component {
     const positionNodes = this.state.positions.map((position, index) => (
       <Position
         team={position.team}
-        rank={position.rank}
+        rank={index + 1}
         key={index}
         swapPositions={this.swapPositions}
         updateTeamname={this.updateTeamname}

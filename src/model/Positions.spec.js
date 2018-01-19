@@ -5,7 +5,6 @@ describe('Positions should', () => {
   beforeEach(() => {
     sampleLeague = [
       {
-        rank: 1,
         team: {
           name: 'Borussia Mönchengladbach',
           editing: true,
@@ -13,7 +12,6 @@ describe('Positions should', () => {
         }
       },
       {
-        rank: 2,
         team: {
           name: 'Borussia Dortmund',
           editing: true,
@@ -21,7 +19,6 @@ describe('Positions should', () => {
         }
       },
       {
-        rank: 3,
         team: {
           name: 'FC Bayern München',
           editing: true,
@@ -33,7 +30,6 @@ describe('Positions should', () => {
   it('swap two different teams', () => {
     const expectedLeagueState = [
       {
-        rank: 1,
         team: {
           name: 'Borussia Mönchengladbach',
           editing: true,
@@ -41,7 +37,6 @@ describe('Positions should', () => {
         }
       },
       {
-        rank: 2,
         team: {
           name: 'FC Bayern München',
           editing: true,
@@ -49,7 +44,6 @@ describe('Positions should', () => {
         }
       },
       {
-        rank: 3,
         team: {
           name: 'Borussia Dortmund',
           editing: true,
@@ -79,7 +73,6 @@ describe('Positions should', () => {
 
     const expectedLeagueState = [
       {
-        rank: 1,
         team: {
           name: 'Borussia Mönchengladbach',
           editing: true,
@@ -87,7 +80,6 @@ describe('Positions should', () => {
         }
       },
       {
-        rank: 2,
         team: {
           name: 'Schalke 04',
           editing: true,
@@ -95,7 +87,6 @@ describe('Positions should', () => {
         }
       },
       {
-        rank: 3,
         team: {
           name: 'FC Bayern München',
           editing: true,

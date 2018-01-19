@@ -1,6 +1,7 @@
 export default class Positions {
   static _findTeamRank = (teamId, positions) => {
-    return positions.find(position => position.team.id === teamId).rank;
+    const zeroBasedIndex =  positions.findIndex(position => position.team.id === teamId);
+    return zeroBasedIndex + 1;
   };
 
   static _findTeam = (teamId, positions) => {
@@ -24,12 +25,10 @@ export default class Positions {
     const targetTeam = Positions._findTeam(targetTeamId, clonedPositions);
 
     const newTarget = {
-      rank: targetRank,
       team: sourceTeam
     };
 
     const newSource = {
-      rank: sourceRank,
       team: targetTeam
     };
 
@@ -51,7 +50,6 @@ export default class Positions {
     team.name = updatedText;
 
     const updatedPosition = {
-      rank: teamRank,
       team
     };
 

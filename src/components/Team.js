@@ -60,7 +60,7 @@ const calculatePositionCssClass = positionNumber => {
 
 class Team extends Component {
   static propTypes = {
-    positionNumber: PropTypes.number.isRequired,
+    rank: PropTypes.number.isRequired,
     updateTeamname: PropTypes.func.isRequired,
     team: PropTypes.object.isRequired,
 
@@ -73,7 +73,7 @@ class Team extends Component {
     this.onChange = this.onChange.bind(this);
   }
   render = () => {
-    const positionNumber = this.props.positionNumber;
+    const rank = this.props.rank;
     const team = this.props.team;
     // These two props are injected by React DnD,
     // as defined by your `collect` function above:
@@ -81,7 +81,7 @@ class Team extends Component {
     const classes = classNames(
       'col-md-12',
       'btn',
-      calculatePositionCssClass(positionNumber)
+      calculatePositionCssClass(rank)
     );
     return connectDragSource(
       <div className={classes} style={{ cursor: 'pointer' }}>
