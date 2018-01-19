@@ -1,31 +1,12 @@
 import React, { Component } from 'react';
 import Position from './Position';
+import Positions from '../model/Positions';
 import { DragDropContext } from 'react-dnd';
 
 import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { SAMPLE_LEAGUE_TABLE } from '../constants/SampleData';
 import { Panel, Col } from 'react-bootstrap';
-
-const findTeamPosition = (teamId, positions) => {
-  const foundPosition = positions
-    .filter(function(posIter) {
-      return posIter.team.id === teamId;
-    })
-    .pop();
-
-  return foundPosition.position;
-};
-
-const findTeam = (teamId, positions) => {
-  const foundPosition = positions
-    .filter(function(posIter) {
-      return posIter.team.id === teamId;
-    })
-    .pop();
-
-  return foundPosition.team;
-};
 
 class LeagueTable extends Component {
   defaultState = {
@@ -82,53 +63,23 @@ class LeagueTable extends Component {
   };
 
   swapPositions = (sourceTeamId, targetTeamId) => {
-    let updatedPositions = this.state.positions;
-
-    const sourcePosition = findTeamPosition(
-      sourceTeamId.sourceId,
-      updatedPositions
-    );
-    const targetPosition = findTeamPosition(targetTeamId, updatedPositions);
-
-    const sourceTeam = findTeam(sourceTeamId.sourceId, updatedPositions);
-    const targetTeam = findTeam(targetTeamId, updatedPositions);
-
-    const newTarget = {
-      position: targetPosition,
-      team: sourceTeam
-    };
-
-    const newSource = {
-      position: sourcePosition,
-      team: targetTeam
-    };
-
-    updatedPositions[targetPosition - 1] = newTarget;
-    updatedPositions[sourcePosition - 1] = newSource;
-
     this.setState({
-      positions: updatedPositions,
+      positions: Positions.recalculateSwappedPositions(
+        sourceTeamId,
+        targetTeamId,
+        this.state.positions
+      ),
       newTeam: {}
     });
   };
 
   updateTeamname = (team, updatedText) => {
-    const positions = this.state.positions;
-
-    const position = findTeamPosition(team.id, positions);
-
-    //team.editing = false;
-    team.name = updatedText;
-
-    const enabledPosition = {
-      position: position,
-      team: team
-    };
-
-    positions[position - 1] = enabledPosition;
-
     this.setState({
-      positions: positions,
+      positions: Positions.updateTeamname(
+        team,
+        updatedText,
+        this.state.positions
+      ),
       newTeam: {}
     });
   };
