@@ -15,14 +15,8 @@ export default class Positions {
     targetTeamId,
     currentPositions
   ) => {
-    const sourceRank = Positions._findTeamRank(
-      sourceTeamId,
-      currentPositions
-    );
-    const targetRank = Positions._findTeamRank(
-      targetTeamId,
-      currentPositions
-    );
+    const sourceRank = Positions._findTeamRank(sourceTeamId, currentPositions);
+    const targetRank = Positions._findTeamRank(targetTeamId, currentPositions);
 
     const sourceTeam = Positions._findTeam(sourceTeamId, currentPositions);
     const targetTeam = Positions._findTeam(targetTeamId, currentPositions);
