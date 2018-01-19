@@ -1,8 +1,8 @@
 export default class Positions {
   static _findTeamPosition = (teamId, positions) => {
     const foundPosition = positions
-      .filter(function(posIter) {
-        return posIter.team.id === teamId;
+      .filter(position => {
+        return position.team.id === teamId;
       })
       .pop();
 
@@ -11,8 +11,8 @@ export default class Positions {
 
   static _findTeam = (teamId, positions) => {
     const foundPosition = positions
-      .filter(function(posIter) {
-        return posIter.team.id === teamId;
+      .filter(position => {
+        return position.team.id === teamId;
       })
       .pop();
 
@@ -30,7 +30,7 @@ export default class Positions {
     );
     const targetPosition = Positions._findTeamPosition(targetTeamId, currentPositions);
 
-    const sourceTeam = Positions._findTeam(sourceTeamId.sourceId, currentPositions);
+    const sourceTeam = Positions._findTeam(sourceTeamId, currentPositions);
     const targetTeam = Positions._findTeam(targetTeamId, currentPositions);
 
     const newTarget = {
