@@ -15,11 +15,13 @@ export default class Positions {
     targetTeamId,
     currentPositions
   ) => {
-    const sourceRank = Positions._findTeamRank(sourceTeamId, currentPositions);
-    const targetRank = Positions._findTeamRank(targetTeamId, currentPositions);
+    let clonedPositions = currentPositions.slice();
 
-    const sourceTeam = Positions._findTeam(sourceTeamId, currentPositions);
-    const targetTeam = Positions._findTeam(targetTeamId, currentPositions);
+    const sourceRank = Positions._findTeamRank(sourceTeamId, clonedPositions);
+    const targetRank = Positions._findTeamRank(targetTeamId, clonedPositions);
+
+    const sourceTeam = Positions._findTeam(sourceTeamId, clonedPositions);
+    const targetTeam = Positions._findTeam(targetTeamId, clonedPositions);
 
     const newTarget = {
       rank: targetRank,
@@ -31,23 +33,29 @@ export default class Positions {
       team: targetTeam
     };
 
-    currentPositions[targetRank - 1] = newTarget;
-    currentPositions[sourceRank - 1] = newSource;
-    return currentPositions;
+    clonedPositions[targetRank - 1] = newTarget;
+    clonedPositions[sourceRank - 1] = newSource;
+    return clonedPositions;
   };
 
-  static recalculatePositionsWithRenamedTeam = (team, updatedText, currentPositions) => {
-    const teamRank = Positions._findTeamRank(team.id, currentPositions);
+  static recalculatePositionsWithRenamedTeam = (
+    team,
+    updatedText,
+    currentPositions
+  ) => {
+    let clonedPositions = currentPositions.slice();
+
+    const teamRank = Positions._findTeamRank(team.id, clonedPositions);
 
     //team.editing = false;
     team.name = updatedText;
 
     const updatedPosition = {
       rank: teamRank,
-      team: team
+      team
     };
 
-    currentPositions[teamRank - 1] = updatedPosition;
-    return currentPositions;
+    clonedPositions[teamRank - 1] = updatedPosition;
+    return clonedPositions;
   };
 }
