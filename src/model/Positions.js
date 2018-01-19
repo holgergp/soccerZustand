@@ -15,11 +15,11 @@ export default class Positions {
     targetTeamId,
     currentPositions
   ) => {
-    const sourcePosition = Positions._findTeamRank(
+    const sourceRank = Positions._findTeamRank(
       sourceTeamId,
       currentPositions
     );
-    const targetPosition = Positions._findTeamRank(
+    const targetRank = Positions._findTeamRank(
       targetTeamId,
       currentPositions
     );
@@ -28,32 +28,32 @@ export default class Positions {
     const targetTeam = Positions._findTeam(targetTeamId, currentPositions);
 
     const newTarget = {
-      rank: targetPosition,
+      rank: targetRank,
       team: sourceTeam
     };
 
     const newSource = {
-      rank: sourcePosition,
+      rank: sourceRank,
       team: targetTeam
     };
 
-    currentPositions[targetPosition - 1] = newTarget;
-    currentPositions[sourcePosition - 1] = newSource;
+    currentPositions[targetRank - 1] = newTarget;
+    currentPositions[sourceRank - 1] = newSource;
     return currentPositions;
   };
 
   static updateTeamname = (team, updatedText, currentPositions) => {
-    const position = Positions._findTeamRank(team.id, currentPositions);
+    const teamRank = Positions._findTeamRank(team.id, currentPositions);
 
     //team.editing = false;
     team.name = updatedText;
 
-    const enabledPosition = {
-      position: position,
+    const updatedPosition = {
+      rank: teamRank,
       team: team
     };
 
-    currentPositions[position - 1] = enabledPosition;
+    currentPositions[teamRank - 1] = updatedPosition;
     return currentPositions;
   };
 }
