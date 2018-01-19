@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-dnd';
 
 import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { SAMPLE_LEAGUE_TABLE } from './SampleData';
+import { SAMPLE_LEAGUE_TABLE } from '../constants/SampleData';
 import { Panel, Col } from 'react-bootstrap';
 
 const findTeamPosition = (teamId, positions) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import Team from './Team';
 import PropTypes from 'prop-types';
-import { ItemTypes } from './DndItemTypes';
+import { ItemTypes } from '../constants/DndItemTypes';
 
 const positionTarget = {
   drop(props) {

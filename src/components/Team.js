@@ -1,6 +1,6 @@
 import { DragSource } from 'react-dnd';
 import React, { Component } from 'react';
-import { ItemTypes } from './DndItemTypes';
+import { ItemTypes } from '../constants//DndItemTypes';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ContentEditable from 'react-contenteditable';
