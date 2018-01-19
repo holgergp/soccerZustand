@@ -1,21 +1,12 @@
 export default class Positions {
-  static _findTeamPosition = (teamId, positions) => {
-    const foundPosition = positions
-      .filter(position => {
-        return position.team.id === teamId;
-      })
-      .pop();
-
-    return foundPosition.position;
+  static _findTeamRank = (teamId, positions) => {
+    return positions.find(position => position.team.id === teamId).rank;
   };
 
   static _findTeam = (teamId, positions) => {
-    const foundPosition = positions
-      .filter(position => {
-        return position.team.id === teamId;
-      })
-      .pop();
-
+    const foundPosition = positions.find(
+      position => position.team.id === teamId
+    );
     return foundPosition.team;
   };
 
@@ -24,22 +15,25 @@ export default class Positions {
     targetTeamId,
     currentPositions
   ) => {
-    const sourcePosition = Positions._findTeamPosition(
+    const sourcePosition = Positions._findTeamRank(
       sourceTeamId,
       currentPositions
     );
-    const targetPosition = Positions._findTeamPosition(targetTeamId, currentPositions);
+    const targetPosition = Positions._findTeamRank(
+      targetTeamId,
+      currentPositions
+    );
 
     const sourceTeam = Positions._findTeam(sourceTeamId, currentPositions);
     const targetTeam = Positions._findTeam(targetTeamId, currentPositions);
 
     const newTarget = {
-      position: targetPosition,
+      rank: targetPosition,
       team: sourceTeam
     };
 
     const newSource = {
-      position: sourcePosition,
+      rank: sourcePosition,
       team: targetTeam
     };
 

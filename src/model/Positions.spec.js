@@ -38,7 +38,6 @@ describe('Positions should', () => {
           id: 'BMG'
         }
       },
-
       {
         rank: 2,
         team: {
@@ -62,6 +61,6 @@ describe('Positions should', () => {
       'FCB',
       sampleLeague
     );
-    expect(updatedeague).toBe(expectedLeagueState);
+    expect(updatedeague).toEqual(expectedLeagueState);
   });
 });
