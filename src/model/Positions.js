@@ -36,7 +36,7 @@ export default class Positions {
     return currentPositions;
   };
 
-  static updateTeamname = (team, updatedText, currentPositions) => {
+  static recalculatePositionsWithRenamedTeam = (team, updatedText, currentPositions) => {
     const teamRank = Positions._findTeamRank(team.id, currentPositions);
 
     //team.editing = false;

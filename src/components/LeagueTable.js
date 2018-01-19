@@ -76,7 +76,7 @@ class LeagueTable extends Component {
 
   updateTeamname = (team, updatedText) => {
     this.setState({
-      positions: Positions.updateTeamname(
+      positions: Positions.recalculatePositionsWithRenamedTeam(
         team,
         updatedText,
         this.state.positions

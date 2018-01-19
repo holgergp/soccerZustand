@@ -16,7 +16,7 @@ const collect = (connect, monitor) => {
     isOver: monitor.isOver(),
     item: monitor.getItem()
   };
-}
+};
 
 class Position extends Component {
   static propTypes = {
@@ -28,7 +28,7 @@ class Position extends Component {
 
   render() {
     const team = this.props.team;
-    const rank = this.props.rank
+    const rank = this.props.rank;
     const updateTeamname = this.props.updateTeamname;
     const swapPositions = this.props.swapPositions;
     const { connectDropTarget } = this.props;
