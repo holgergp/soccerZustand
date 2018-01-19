@@ -43,7 +43,7 @@ export default class Positions {
   };
 
   static updateTeamname = (team, updatedText, currentPositions) => {
-    const position = Positions._findTeamPosition(team.id, currentPositions);
+    const position = Positions._findTeamRank(team.id, currentPositions);
 
     //team.editing = false;
     team.name = updatedText;
