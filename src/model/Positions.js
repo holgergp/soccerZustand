@@ -25,7 +25,7 @@ export default class Positions {
     currentPositions
   ) => {
     const sourcePosition = Positions._findTeamPosition(
-      sourceTeamId.sourceId,
+      sourceTeamId,
       currentPositions
     );
     const targetPosition = Positions._findTeamPosition(targetTeamId, currentPositions);

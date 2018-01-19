@@ -39,10 +39,11 @@ class LeagueTable extends Component {
   }
 
   render = () => {
-    const positionNodes = this.state.positions.map(posIter => (
+    const positionNodes = this.state.positions.map((position, index) => (
       <Position
-        position={posIter}
-        key={posIter.position}
+        team={position.team}
+        rank={position.rank}
+        key={index}
         swapPositions={this.swapPositions}
         updateTeamname={this.updateTeamname}
       />
@@ -79,8 +80,7 @@ class LeagueTable extends Component {
         team,
         updatedText,
         this.state.positions
-      ),
-      newTeam: {}
+      )
     });
   };
 }

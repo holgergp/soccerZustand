@@ -6,8 +6,7 @@ import { ItemTypes } from '../constants/DndItemTypes';
 
 const positionTarget = {
   drop(props) {
-    //unused params monitor, component
-    return props.position.team;
+    return props.team;
   }
 };
 
@@ -23,12 +22,13 @@ class Position extends Component {
   static propTypes = {
     swapPositions: PropTypes.func.isRequired,
     updateTeamname: PropTypes.func.isRequired,
-    position: PropTypes.object.isRequired
+    rank: PropTypes.number.isRequired,
+    team: PropTypes.object.isRequired
   };
 
   render() {
-    const position = this.props.position;
-    const team = this.props.position.team;
+    const team = this.props.team;
+    const rank = this.props.rank
     const updateTeamname = this.props.updateTeamname;
     const swapPositions = this.props.swapPositions;
     const { connectDropTarget } = this.props;
@@ -37,7 +37,7 @@ class Position extends Component {
         <span>
           <Team
             team={team}
-            positionNumber={position.position}
+            positionNumber={rank}
             updateTeamname={updateTeamname}
             swapPositions={swapPositions}
           />

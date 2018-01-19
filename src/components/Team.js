@@ -1,6 +1,6 @@
 import { DragSource } from 'react-dnd';
 import React, { Component } from 'react';
-import { ItemTypes } from '../constants//DndItemTypes';
+import { ItemTypes } from '../constants/DndItemTypes';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ContentEditable from 'react-contenteditable';
@@ -24,7 +24,7 @@ const teamSource = {
     // When dropped on a compatible target, do something
     const sourceTeam = monitor.getItem();
     const targetTeam = monitor.getDropResult();
-    props.swapPositions(sourceTeam, targetTeam.id);
+    props.swapPositions(sourceTeam.sourceId, targetTeam.id);
   }
 };
 
