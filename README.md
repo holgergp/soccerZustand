@@ -10,3 +10,5 @@ Start with `yarn start`.
 See the result in your Browser: http://localhost:3000
 
 Run the tests with `yarn test`.
+
+You can play with it under the projects GH-Page [here](https://holgergp.github.io/soccerReact16/)
