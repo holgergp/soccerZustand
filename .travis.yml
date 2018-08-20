@@ -1,3 +1,32 @@
 language: node_js
+
 node_js:
-  - '8'
+  - 10
+
+## Cache NPM folder and Cypress binary
+## to avoid downloading Cypress again and again
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
+install:
+  - npm ci
+
+before_script:
+  - npm start &
+
+script:
+  ## now run cypress headlessly
+  ## and record all of the tests.
+  ## Cypress will search for a
+  ## CYPRESS_RECORD_KEY environment
+  ## variable by default and apply
+  ## this to the run.
+  - npm run cypress:run
+
+  ## alternatively we could specify
+  ## a specific record key to use
+  ## like this without having to
+  ## configure environment variables
+  ## - cypress run --record --key <your_record_key>
