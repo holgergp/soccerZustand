@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - 10
+  - 8
 
 ## Cache NPM folder and Cypress binary
 ## to avoid downloading Cypress again and again
@@ -11,7 +11,7 @@ cache:
     - ~/.cache
 
 install:
-  - npm ci
+  - npm install
 
 before_script:
   - npm start &
