@@ -4,5 +4,6 @@ node_js:
 install:
   - npm install -g codecov
 script:
-  - yarn test
+  - yarn
+  - yarn test --coverage=true
   - codecov
