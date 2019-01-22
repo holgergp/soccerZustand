@@ -28,7 +28,7 @@ script:
   ## CYPRESS_RECORD_KEY environment
   ## variable by default and apply
   ## this to the run.
-  - yarn cypress:run
+  - yarn cypress:run:record
 
   ## alternatively we could specify
   ## a specific record key to use

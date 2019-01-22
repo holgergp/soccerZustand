@@ -25,6 +25,7 @@
     "deploy": "gh-pages -d build",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "cypress:run:record": "cypress run -record --key f9a14ac8-4663-47e2-b669-a1d1be9626b4",
     "lint": "node_modules/.bin/eslint ./ --ext .js,.jsx",
     "lint:fix": "node_modules/.bin/eslint ./ --ext .js,.jsx --fix"
   },
