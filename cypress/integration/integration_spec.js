@@ -12,11 +12,8 @@ it('Change Teamname', () => {
 it('Move Team around', () => {
     const firstTeamSelector = ':nth-child(1) > span > .col-md-12';
     const thirdTeamSelector = ':nth-child(3) > span > .col-md-12';
-    cy.get(firstTeamSelector)
-      .trigger("mousedown", { which: 1 })
+    cy.get(firstTeamSelector).drag(thirdTeamSelector);
+  }); 
+});
 
-    cy.get(thirdTeamSelector)
-      .trigger("mousemove")
-      .trigger("mouseup")
-  });
-})
+
