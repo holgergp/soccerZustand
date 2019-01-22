@@ -4,17 +4,17 @@
   "private": true,
   "homepage": "https://holgergp.github.io/soccerReact16",
   "dependencies": {
-    "bootstrap": "3",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "bootstrap": "^3.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "lodash": "^4.17.4",
-    "react": "^16.2.0",
+    "react": "^16.3.0",
     "react-bootstrap": "^0.32.0",
-    "react-contenteditable": "^2.0.5",
-    "react-dnd": "^2.5.4",
-    "react-dnd-html5-backend": "^2.5.4",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.0"
+    "react-contenteditable": "^3.0.0",
+    "react-dnd": "^5.0.0",
+    "react-dnd-html5-backend": "^5.0.1",
+    "react-dom": "^16.3.0",
+    "react-scripts": "2.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,10 +24,22 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "lint": "node_modules/.bin/eslint ./ --ext .js,.jsx",
+    "lint:fix": "node_modules/.bin/eslint ./ --ext .js,.jsx --fix"
   },
   "devDependencies": {
-    "cypress": "3.1.4",
-    "gh-pages": "^1.1.0"
-  }
+    "gh-pages": "^2.0.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.14.1",
+    "eslint-plugin-react": "^7.4.0",
+    "cypress": "3.1.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
