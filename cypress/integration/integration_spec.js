@@ -14,12 +14,17 @@ describe('Webapp visible', () => {
         const firstTeamNameSelector = ':nth-child(1) > span > .col-md-12 > .textPointer';
         const thirdTeamSelector = ':nth-child(3) > span > .col-md-12';
         const thirdTeamNameSelector = ':nth-child(3) > span > .col-md-12 > .textPointer';
-        cy.get(firstTeamNameSelector).invoke('text').then((firstTeamName) => {
-            cy.get(thirdTeamNameSelector).invoke('text').then((thirdTeamName) => {
-                cy.get(firstTeamSelector).drag(thirdTeamSelector);
-                cy.get(firstTeamNameSelector).should('contain', thirdTeamName);
-                cy.get(thirdTeamNameSelector).should('contain', firstTeamName);
-            });
+        cy.get(firstTeamNameSelector).invoke('text').as('firstTeamName');
+        cy.get(thirdTeamNameSelector).invoke('text').as('thirdTeamName');
+
+        cy.get(firstTeamSelector).drag(thirdTeamSelector);
+
+        cy.get('@firstTeamName').then((firstTeamName) => {
+            cy.get(thirdTeamNameSelector).should('contain', firstTeamName);
+        });
+
+        cy.get('@thirdTeamName').then((thirdTeamName) => {
+            cy.get(firstTeamNameSelector).should('contain', thirdTeamName);
         });
     });
 });
