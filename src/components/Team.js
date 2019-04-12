@@ -1,5 +1,5 @@
 import { DragSource } from 'react-dnd';
-import React, { Component } from 'react';
+import React from 'react';
 import { ItemTypes } from '../constants/DndItemTypes';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -50,49 +50,44 @@ const calculatePositionCssClass = positionNumber => {
   }
 };
 
-class Team extends Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    rank: PropTypes.number.isRequired,
+const Team = props => {
+  const { rank, team, updateTeamname } = props;
+  // These two props are injected by React DnD,
+  // as defined by your `collect` function above:
+  const { connectDragSource } = props;
+  const classes = classNames(
+    'col-md-12',
+    'btn',
+    'text-bold',
+    calculatePositionCssClass(rank)
+  );
 
-    // Injected by React DnD:
-    team: PropTypes.object.isRequired,
-    updateTeamname: PropTypes.func.isRequired
-  };
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-  render = () => {
-    const rank = this.props.rank;
-    const team = this.props.team;
-    // These two props are injected by React DnD,
-    // as defined by your `collect` function above:
-    const { connectDragSource } = this.props;
-    const classes = classNames(
-      'col-md-12',
-      'btn',
-      'text-bold',
-      calculatePositionCssClass(rank)
-    );
-    return connectDragSource(
-      <div className={classes} style={{ cursor: 'pointer' }}>
-        <ContentEditable
-          onChange={this.onChange}
-          className="textPointer"
-          html={team.name}
-          autoFocus={true}
-          maxLength={200}
-          disabled={!this.props.team.editing}
-        />
-      </div>
-    );
+  const onChange = evt => {
+    updateTeamname(team, evt.target.value);
   };
 
-  onChange(evt) {
-    this.props.updateTeamname(this.props.team, evt.target.value);
-  }
-}
+  return connectDragSource(
+    <div className={classes} style={{ cursor: 'pointer' }}>
+      <ContentEditable
+        onChange={onChange}
+        className="textPointer"
+        html={team.name}
+        autoFocus={true}
+        maxLength={200}
+        disabled={!team.editing}
+      />
+    </div>
+  );
+};
+
+Team.propTypes = {
+  connectDragSource: PropTypes.func.isRequired,
+  isDragging: PropTypes.bool.isRequired,
+  rank: PropTypes.number.isRequired,
+
+  // Injected by React DnD:
+  team: PropTypes.object.isRequired,
+  updateTeamname: PropTypes.func.isRequired
+};
 
 export default DragSource(ItemTypes.TEAM, teamSource, collect)(Team);

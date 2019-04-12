@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Position from './Position';
 import Positions from '../model/Positions';
 import { DragDropContext } from 'react-dnd';
@@ -7,79 +7,70 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { SAMPLE_LEAGUE_TABLE } from '../constants/SampleData';
 import { Card, Col } from 'react-bootstrap';
 
-export class LeagueTable extends Component {
-  defaultState = {
-    positions: SAMPLE_LEAGUE_TABLE,
-    newTeam: {}
+const LeagueTable = () => {
+  const defaultState = {
+    positions: SAMPLE_LEAGUE_TABLE
   };
 
-  constructor(props) {
-    super(props);
-    this.state = this.getInitialState();
-    this.swapPositions = this.swapPositions.bind(this);
-    this.updateTeamname = this.updateTeamname.bind(this);
-  }
-
-  getInitialState() {
+  const getInitialState = () => {
     if (_.isUndefined(localStorage.state)) {
-      return this.defaultState;
+      return defaultState;
     }
     const localstate = JSON.parse(localStorage.state);
 
     if (_.isUndefined(localstate)) {
-      return this.defaultState;
+      return defaultState;
     }
     return localstate;
-  }
+  };
 
-  componentDidUpdate() {
-    //unused params prevProps and prevState
-    localStorage.state = JSON.stringify(this.state);
-  }
+  const [positions, setPositions] = useState(getInitialState().positions);
 
-  render = () => {
-    const positionNodes = this.state.positions.map((team, index) => (
-      <Position
-        team={team}
-        rank={index + 1}
-        key={index}
-        swapPositions={this.swapPositions}
-        updateTeamname={this.updateTeamname}
-      />
-    ));
-
-    return (
-      <Col md={6}>
-        <Card bg="dark">
-          <Card.Header>
-            <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
-          </Card.Header>
-          <Card.Body>{positionNodes}</Card.Body>
-        </Card>
-      </Col>
+  const swapPositions = (sourceTeamId, targetTeamId) => {
+    setPositions(
+      Positions.recalculateSwappedPositions(
+        sourceTeamId,
+        targetTeamId,
+        positions
+      )
     );
   };
 
-  swapPositions = (sourceTeamId, targetTeamId) => {
-    this.setState({
-      positions: Positions.recalculateSwappedPositions(
-        sourceTeamId,
-        targetTeamId,
-        this.state.positions
-      ),
-      newTeam: {}
-    });
-  };
-
-  updateTeamname = (team, updatedText) => {
-    this.setState({
-      positions: Positions.recalculatePositionsWithRenamedTeam(
+  const updateTeamname = (team, updatedText) => {
+    setPositions(
+      Positions.recalculatePositionsWithRenamedTeam(
         team,
         updatedText,
-        this.state.positions
+        positions
       )
-    });
+    );
   };
-}
+
+  useEffect(() => {
+    //unused params prevProps and prevState
+    localStorage.state = JSON.stringify({ positions });
+  });
+
+  const positionNodes = positions.map((team, index) => (
+    <Position
+      team={team}
+      rank={index + 1}
+      key={index}
+      swapPositions={swapPositions}
+      updateTeamname={updateTeamname}
+    />
+  ));
+
+  return (
+    <Col md={6}>
+      <Card bg="dark">
+        <Card.Header>
+          <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
+        </Card.Header>
+        <Card.Body>{positionNodes}</Card.Body>
+      </Card>
+    </Col>
+  );
+};
 
 export default DragDropContext(HTML5Backend)(LeagueTable);

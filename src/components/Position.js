@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { DropTarget } from 'react-dnd';
 import Team from './Team';
 import PropTypes from 'prop-types';
@@ -18,32 +18,29 @@ const collect = (connect, monitor) => {
   };
 };
 
-class Position extends Component {
-  static propTypes = {
-    connectDropTarget: PropTypes.func.isRequired,
-    rank: PropTypes.number.isRequired,
-    swapPositions: PropTypes.func.isRequired,
-    team: PropTypes.object.isRequired,
-    updateTeamname: PropTypes.func.isRequired
-  };
+const Position = props => {
+  const team = props.team;
+  const rank = props.rank;
+  const updateTeamname = props.updateTeamname;
+  const swapPositions = props.swapPositions;
+  const { connectDropTarget } = props;
+  return connectDropTarget(
+    <div>
+      <Team
+        team={team}
+        rank={rank}
+        updateTeamname={updateTeamname}
+        swapPositions={swapPositions}
+      />
+    </div>
+  );
+};
 
-  render() {
-    const team = this.props.team;
-    const rank = this.props.rank;
-    const updateTeamname = this.props.updateTeamname;
-    const swapPositions = this.props.swapPositions;
-    const { connectDropTarget } = this.props;
-    return connectDropTarget(
-      <div>
-        <Team
-          team={team}
-          rank={rank}
-          updateTeamname={updateTeamname}
-          swapPositions={swapPositions}
-        />
-      </div>
-    );
-  }
-}
-
+Position.propTypes = {
+  connectDropTarget: PropTypes.func.isRequired,
+  rank: PropTypes.number.isRequired,
+  swapPositions: PropTypes.func.isRequired,
+  team: PropTypes.object.isRequired,
+  updateTeamname: PropTypes.func.isRequired
+};
 export default DropTarget(ItemTypes.TEAM, positionTarget, collect)(Position);
