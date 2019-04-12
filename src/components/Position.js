@@ -3,7 +3,6 @@ import {DropTarget} from 'react-dnd';
 import Team from './Team';
 import PropTypes from 'prop-types';
 import {ItemTypes} from '../constants/DndItemTypes';
-import {Card} from 'react-bootstrap';
 
 const positionTarget = {
     drop(props) {
