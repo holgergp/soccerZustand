@@ -19,33 +19,31 @@ const collect = (connect, monitor) => {
 };
 
 class Position extends Component {
-  static propTypes = {
-      connectDropTarget: PropTypes.func.isRequired,
-      rank: PropTypes.number.isRequired,
-      swapPositions: PropTypes.func.isRequired,
-      team: PropTypes.object.isRequired,
-      updateTeamname: PropTypes.func.isRequired
-  };
+    static propTypes = {
+        connectDropTarget: PropTypes.func.isRequired,
+        rank: PropTypes.number.isRequired,
+        swapPositions: PropTypes.func.isRequired,
+        team: PropTypes.object.isRequired,
+        updateTeamname: PropTypes.func.isRequired
+    };
 
-  render() {
-      const team = this.props.team;
-      const rank = this.props.rank;
-      const updateTeamname = this.props.updateTeamname;
-      const swapPositions = this.props.swapPositions;
-      const {connectDropTarget} = this.props;
-      return connectDropTarget(
-          <div>
-              <span>
-                  <Team
-                      team={team}
-                      rank={rank}
-                      updateTeamname={updateTeamname}
-                      swapPositions={swapPositions}
-                  />
-              </span>
-          </div>
-      );
-  }
+    render() {
+        const team = this.props.team;
+        const rank = this.props.rank;
+        const updateTeamname = this.props.updateTeamname;
+        const swapPositions = this.props.swapPositions;
+        const {connectDropTarget} = this.props;
+        return connectDropTarget(
+            <div>
+                <Team
+                    team={team}
+                    rank={rank}
+                    updateTeamname={updateTeamname}
+                    swapPositions={swapPositions}
+                />
+            </div>
+        );
+    }
 }
 
 export default DropTarget(ItemTypes.TEAM, positionTarget, collect)(Position);

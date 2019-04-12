@@ -5,7 +5,7 @@ import {DragDropContext} from 'react-dnd';
 import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {SAMPLE_LEAGUE_TABLE} from '../constants/SampleData';
-import {Panel, Col} from 'react-bootstrap';
+import {Card, Col} from 'react-bootstrap';
 
 export class LeagueTable extends Component {
   defaultState = {
@@ -50,14 +50,14 @@ export class LeagueTable extends Component {
 
       return (
           <Col md={6}>
-              <Panel bsStyle="primary">
-                  <Panel.Heading>
-                      <Panel.Title componentClass="h3">
+              <Card bg="dark">
+                  <Card.Header>
+                      <Card.Title>
               Ligatabelle zum Selberstecken
-                      </Panel.Title>
-                  </Panel.Heading>
-                  <div className="panel-body">{positionNodes}</div>
-              </Panel>
+                      </Card.Title>
+                  </Card.Header>
+                  <Card.Body>{positionNodes}</Card.Body>
+              </Card>
           </Col>
       );
   };

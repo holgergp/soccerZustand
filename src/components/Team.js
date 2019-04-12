@@ -73,6 +73,7 @@ class Team extends Component {
       const classes = classNames(
           'col-md-12',
           'btn',
+          'text-bold',
           calculatePositionCssClass(rank)
       );
       return connectDragSource(
