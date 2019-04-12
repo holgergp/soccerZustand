@@ -1,3 +1,3 @@
 exports.ItemTypes = {
-    TEAM: 'team'
+  TEAM: 'team'
 };
