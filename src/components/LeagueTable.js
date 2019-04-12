@@ -1,85 +1,73 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect} from 'react';
 import Position from './Position';
 import Positions from '../model/Positions';
-import { DragDropContext } from 'react-dnd';
+import {DragDropContext} from 'react-dnd';
 import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { SAMPLE_LEAGUE_TABLE } from '../constants/SampleData';
-import { Card, Col } from 'react-bootstrap';
+import {SAMPLE_LEAGUE_TABLE} from '../constants/SampleData';
+import {Card, Col} from 'react-bootstrap';
 
-export class LeagueTable extends Component {
-  defaultState = {
-    positions: SAMPLE_LEAGUE_TABLE,
-    newTeam: {}
-  };
+const LeagueTable = (props) => {
 
-  constructor(props) {
-    super(props);
-    this.state = this.getInitialState();
-    this.swapPositions = this.swapPositions.bind(this);
-    this.updateTeamname = this.updateTeamname.bind(this);
-  }
+    const defaultState = {
+        positions: SAMPLE_LEAGUE_TABLE
+    };
 
-  getInitialState() {
-    if (_.isUndefined(localStorage.state)) {
-      return this.defaultState;
-    }
-    const localstate = JSON.parse(localStorage.state);
+    const getInitialState = () => {
+        if (_.isUndefined(localStorage.state)) {
+            return defaultState;
+        }
+        const localstate = JSON.parse(localStorage.state);
 
-    if (_.isUndefined(localstate)) {
-      return this.defaultState;
-    }
-    return localstate;
-  }
+        if (_.isUndefined(localstate)) {
+            return defaultState;
+        }
+        return localstate;
+    };
 
-  componentDidUpdate() {
-    //unused params prevProps and prevState
-    localStorage.state = JSON.stringify(this.state);
-  }
+    const [positions, setPositions] = useState(getInitialState().positions);
 
-  render = () => {
-    const positionNodes = this.state.positions.map((team, index) => (
-      <Position
-        team={team}
-        rank={index + 1}
-        key={index}
-        swapPositions={this.swapPositions}
-        updateTeamname={this.updateTeamname}
-      />
+    const swapPositions = (sourceTeamId, targetTeamId) => {
+        setPositions(Positions.recalculateSwappedPositions(
+            sourceTeamId,
+            targetTeamId,
+            positions
+        ));
+    };
+
+    const updateTeamname = (team, updatedText) => {
+        setPositions(Positions.recalculatePositionsWithRenamedTeam(
+            team,
+            updatedText,
+            positions
+        ));
+    };
+
+    useEffect(() => {
+        //unused params prevProps and prevState
+        localStorage.state = JSON.stringify({positions});
+    });
+
+    const positionNodes = positions.map((team, index) => (
+        <Position
+            team={team}
+            rank={index + 1}
+            key={index}
+            swapPositions={swapPositions}
+            updateTeamname={updateTeamname}
+        />
     ));
 
     return (
-      <Col md={6}>
-        <Card bg="dark">
-          <Card.Header>
-            <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
-          </Card.Header>
-          <Card.Body>{positionNodes}</Card.Body>
-        </Card>
-      </Col>
+        <Col md={6}>
+            <Card bg="dark">
+                <Card.Header>
+                    <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
+                </Card.Header>
+                <Card.Body>{positionNodes}</Card.Body>
+            </Card>
+        </Col>
     );
-  };
-
-  swapPositions = (sourceTeamId, targetTeamId) => {
-    this.setState({
-      positions: Positions.recalculateSwappedPositions(
-        sourceTeamId,
-        targetTeamId,
-        this.state.positions
-      ),
-      newTeam: {}
-    });
-  };
-
-  updateTeamname = (team, updatedText) => {
-    this.setState({
-      positions: Positions.recalculatePositionsWithRenamedTeam(
-        team,
-        updatedText,
-        this.state.positions
-      )
-    });
-  };
-}
+};
 
 export default DragDropContext(HTML5Backend)(LeagueTable);
