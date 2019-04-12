@@ -29,13 +29,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "cypress:run:record": "cypress run --record --key f9a14ac8-4663-47e2-b669-a1d1be9626b4",
-    "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "lint-staged": {
-      "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-        "prettier --single-quote --write",
-        "git add"
-      ]
-    }
+    "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "devDependencies": {
     "cypress": "3.2.0",
@@ -45,6 +39,12 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",
