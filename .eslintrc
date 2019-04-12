@@ -13,15 +13,18 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended"
   ],
   "plugins": [
     "babel",
     "import",
     "react",
-    "jest"
+    "jest",
+    "prettier"
   ],
   "rules": {
+    "prettier/prettier": ["error", { "singleQuote": true }],
     "no-cond-assign": "error",
     "no-dupe-args": "error",
     "no-dupe-keys": "error",
@@ -159,13 +162,6 @@
       "error",
       "never"
     ],
-    "indent": [
-      "error",
-      4,
-      {
-        "SwitchCase": 1
-      }
-    ],
     "linebreak-style": [
       "error",
       "unix"
@@ -174,7 +170,12 @@
       "error",
       3
     ],
-    "max-statements": ["error", {"max": 20}],
+    "max-statements": [
+      "error",
+      {
+        "max": 20
+      }
+    ],
     "complexity": [
       "error",
       10
@@ -213,10 +214,6 @@
       "error",
       "always"
     ],
-    "object-curly-spacing": [
-      "error",
-      "never"
-    ],
     "react/sort-prop-types": "error",
     "react/no-will-update-set-state": "error",
     "react/jsx-curly-brace-presence": "error",
@@ -226,36 +223,56 @@
       "error",
       "never"
     ],
-    "no-multiple-empty-lines": ["error", { "max": 1 }],
     "padded-blocks": [
       "error",
       "never"
     ],
     "padding-line-between-statements": [
       "error",
-      { "blankLine": "never", "prev": "*", "next": "import" }
+      {
+        "blankLine": "never",
+        "prev": "*",
+        "next": "import"
+      }
     ],
     "no-console": [
       "error",
-      {"allow": ["info"]}
+      {
+        "allow": [
+          "info"
+        ]
+      }
     ]
   },
   "overrides": [
     {
-      "files": ["**/*.spec.js", "**/*.spec.jsx"],
+      "files": [
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
       "rules": {
         "no-console": [
           "error",
-          {"allow": ["error"]}
+          {
+            "allow": [
+              "error"
+            ]
+          }
         ],
-        "max-statements": ["off"]
+        "max-statements": [
+          "off"
+        ]
       }
     },
     {
-      "files": ["**/registerServiceWorker.js"],
-        "rules": {
-          "no-console": ["off"]
-        }
+      "files": [
+        "**/registerServiceWorker.js"
+      ],
+      "rules": {
+        "no-console": [
+          "off"
+        ]
+      }
     }
   ]
 }

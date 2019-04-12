@@ -24,18 +24,21 @@ const dataTransfer = require('./dragSupport');
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-Cypress.Commands.add('drag', {
+Cypress.Commands.add(
+  'drag',
+  {
     prevSubject: 'element'
-}, (sourceSelector, targetSelector) => {
-
+  },
+  (sourceSelector, targetSelector) => {
     cy.wrap(sourceSelector.get(0))
-        .trigger('mousedown', {which: 1})
-        .trigger('dragstart', {dataTransfer})
-        .trigger('drag', {});
+      .trigger('mousedown', { which: 1 })
+      .trigger('dragstart', { dataTransfer })
+      .trigger('drag', {});
 
     cy.get(targetSelector)
-        .trigger('dragover', {dataTransfer})
-        .trigger('drop', {dataTransfer})
-        .trigger('dragend', {dataTransfer})
-        .trigger('mouseup', {which: 1});
-});
+      .trigger('dragover', { dataTransfer })
+      .trigger('drop', { dataTransfer })
+      .trigger('dragend', { dataTransfer })
+      .trigger('mouseup', { which: 1 });
+  }
+);
