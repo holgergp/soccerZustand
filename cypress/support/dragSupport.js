@@ -1,7 +1,7 @@
 const dataTransfer = new DndSimulatorDataTransfer();
 
 function DndSimulatorDataTransfer() {
-    this.data = {};
+  this.data = {};
 }
 
 DndSimulatorDataTransfer.prototype.dropEffect = 'move';
@@ -10,34 +10,34 @@ DndSimulatorDataTransfer.prototype.files = [];
 DndSimulatorDataTransfer.prototype.items = [];
 DndSimulatorDataTransfer.prototype.types = [];
 
-DndSimulatorDataTransfer.prototype.clearData = function (format) {
-    if (format) {
-        delete this.data[format];
-        const index = this.types.indexOf(format);
-        delete this.types[index];
-        delete this.data[index];
-    } else {
-        this.data = {};
-    }
+DndSimulatorDataTransfer.prototype.clearData = function(format) {
+  if (format) {
+    delete this.data[format];
+    const index = this.types.indexOf(format);
+    delete this.types[index];
+    delete this.data[index];
+  } else {
+    this.data = {};
+  }
 };
 
-DndSimulatorDataTransfer.prototype.setData = function (format, data) {
-    this.data[format] = data;
-    this.items.push(data);
-    this.types.push(format);
+DndSimulatorDataTransfer.prototype.setData = function(format, data) {
+  this.data[format] = data;
+  this.items.push(data);
+  this.types.push(format);
 };
 
-DndSimulatorDataTransfer.prototype.getData = function (format) {
-    if (format in this.data) {
-        return this.data[format];
-    }
+DndSimulatorDataTransfer.prototype.getData = function(format) {
+  if (format in this.data) {
+    return this.data[format];
+  }
 
-    return '';
+  return '';
 };
 
-DndSimulatorDataTransfer.prototype.setDragImage = function (img, xOffset, yOffset) {
-    // since simulation doesn"t replicate the visual
-    // effects, there is no point in implementing this
+DndSimulatorDataTransfer.prototype.setDragImage = function() {
+  // since simulation doesn"t replicate the visual
+  // effects, there is no point in implementing this
 };
 
-module.exports = {dataTransfer};
+module.exports = { dataTransfer };
