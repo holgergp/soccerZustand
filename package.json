@@ -18,7 +18,7 @@
     "react-dnd": "^7.0.2",
     "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0"
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,7 +34,7 @@
     "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"+(src|cypress)/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "devDependencies": {
-    "cypress": "3.2.0",
+    "cypress": "3.3.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-babel": "^5.0.0",
     "eslint-plugin-import": "^2.7.0",
