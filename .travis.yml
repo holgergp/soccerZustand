@@ -36,6 +36,7 @@ script:
   ## configure environment variables
   ## - cypress run --record --key <your_record_key>
 
+## to prevent 'libgconf-2.so.4: cannot open shared object file'
 addons:
   apt:
     packages:
