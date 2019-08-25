@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Position from './Position';
 import Positions from '../model/Positions';
-import { DragDropContext } from 'react-dnd';
+import { DndProvider } from 'react-dnd';
 import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { SAMPLE_LEAGUE_TABLE } from '../constants/SampleData';
@@ -62,15 +62,17 @@ const LeagueTable = () => {
   ));
 
   return (
-    <Col md={6}>
-      <Card bg="dark">
-        <Card.Header>
-          <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
-        </Card.Header>
-        <Card.Body>{positionNodes}</Card.Body>
-      </Card>
-    </Col>
+    <DndProvider backend={HTML5Backend}>
+      <Col md={6}>
+        <Card bg="dark">
+          <Card.Header>
+            <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
+          </Card.Header>
+          <Card.Body>{positionNodes}</Card.Body>
+        </Card>
+      </Col>
+    </DndProvider>
   );
 };
 
-export default DragDropContext(HTML5Backend)(LeagueTable);
+export default LeagueTable;
