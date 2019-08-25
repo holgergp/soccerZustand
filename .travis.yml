@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '8'
+  - '10'
 
 ## Cache NPM folder and Cypress binary
 ## to avoid downloading Cypress again and again
