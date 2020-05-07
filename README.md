@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/holgergp/soccerReact16) 
+
 [![Build Status Travis](https://travis-ci.org/holgergp/soccerReact16.svg?branch=master)](https://travis-ci.org/holgergp/soccerReact16)
 [![Greenkeeper badge](https://badges.greenkeeper.io/holgergp/soccerReact16.svg)](https://greenkeeper.io/)
 [![codecov](https://codecov.io/gh/holgergp/soccerReact16/branch/master/graph/badge.svg)](https://codecov.io/gh/holgergp/soccerReact16)
