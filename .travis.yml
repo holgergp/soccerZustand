@@ -15,13 +15,9 @@ cache:
 install:
   - yarn
   - yarn global add codecov
-  - yarn global add wait-on
-
-env:
-  - PUBLIC_URL=http://localhost:3000
 
 before_script:
-  - yarn start & wait-on http://localhost:3000
+  - yarn start
 
 script:
   - yarn test --coverage=true
