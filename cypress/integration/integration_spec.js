@@ -4,11 +4,11 @@ describe('Webapp visible', () => {
   });
   it('Change Teamname', () => {
     const firstTeamSelector = ':nth-child(1)  > .col-md-12 > .textPointer';
-    return cy.get(firstTeamSelector).then(firstTeam => {
-      const newTeamName = 'Der beste Verein';
-      firstTeam.type(`{selectall}{backspace}${newTeamName}`);
-      cy.get(firstTeamSelector).should('contain', newTeamName);
-    });
+    const newTeamName = 'Der beste Verein';
+    return cy
+      .get(firstTeamSelector)
+      .type(`{selectall}{backspace}${newTeamName}`)
+      .and('contain', newTeamName);
   });
   it('Move Team around', () => {
     const firstTeamSelector = ':nth-child(1) > .col-md-12';
