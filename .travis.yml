@@ -15,9 +15,10 @@ cache:
 install:
   - yarn
   - yarn global add codecov
+  - yarn global add wait-on
 
 before_script:
-  - yarn start &
+  - yarn start & wait-on http://localhost:3000
 
 script:
   - yarn test --coverage=true
