@@ -17,7 +17,7 @@ install:
   - yarn global add codecov
 
 before_script:
-  - yarn start
+  - yarn start &
 
 script:
   - yarn test --coverage=true
