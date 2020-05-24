@@ -1,3 +1,8 @@
+import {
+  recalculateSwappedPositions,
+  recalculatePositionsWithRenamedTeam
+} from './Positions';
+
 describe('Positions should', () => {
   let sampleLeague;
   beforeEach(() => {
