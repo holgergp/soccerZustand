@@ -18,7 +18,7 @@ install:
   - yarn global add wait-on
 
 before_script:
-  - yarn start & wait-on http://localhost:3000
+  - yarn start & wait-on http://localhost
 
 script:
   - yarn test --coverage=true
