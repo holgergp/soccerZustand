@@ -12,16 +12,12 @@ import { Card, Col } from 'react-bootstrap';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const LeagueTable = () => {
-  const defaultState = {
-    positions: SAMPLE_LEAGUE_TABLE
-  };
-
   const [storedState, setStoredState] = useLocalStorage(
     'LEAGUE_TABLE',
-    defaultState
+    SAMPLE_LEAGUE_TABLE
   );
 
-  const [positions, setPositions] = useState(storedState.positions);
+  const [positions, setPositions] = useState(storedState);
 
   const swapPositions = (sourceTeamId, targetTeamId) => {
     setPositions(
@@ -36,7 +32,7 @@ const LeagueTable = () => {
   };
 
   useEffect(() => {
-    setStoredState({ positions });
+    setStoredState(positions);
   });
 
   const positionNodes = positions.map((team, index) => (
