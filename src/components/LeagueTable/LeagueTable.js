@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Position from '../Position/Position';
 import { DndProvider } from 'react-dnd';
-import _ from 'lodash';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {
   recalculateSwappedPositions,
