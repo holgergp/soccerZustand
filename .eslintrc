@@ -155,10 +155,6 @@
       "error",
       "last"
     ],
-    "comma-dangle": [
-      "error",
-      "never"
-    ],
     "consistent-this": [
       "error",
       "that"

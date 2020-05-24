@@ -7,18 +7,18 @@ import { ItemTypes } from '../../DndItemTypes';
 const positionTarget = {
   drop(props) {
     return props.team;
-  }
+  },
 };
 
 const collect = (connect, monitor) => {
   return {
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
-    item: monitor.getItem()
+    item: monitor.getItem(),
   };
 };
 
-const Position = props => {
+const Position = (props) => {
   const team = props.team;
   const rank = props.rank;
   const updateTeamname = props.updateTeamname;
@@ -41,6 +41,6 @@ Position.propTypes = {
   rank: PropTypes.number.isRequired,
   swapPositions: PropTypes.func.isRequired,
   team: PropTypes.object.isRequired,
-  updateTeamname: PropTypes.func.isRequired
+  updateTeamname: PropTypes.func.isRequired,
 };
 export default DropTarget(ItemTypes.TEAM, positionTarget, collect)(Position);

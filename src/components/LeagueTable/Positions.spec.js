@@ -1,6 +1,6 @@
 import {
   recalculateSwappedPositions,
-  recalculatePositionsWithRenamedTeam
+  recalculatePositionsWithRenamedTeam,
 } from './Positions';
 
 describe('Positions should', () => {
@@ -10,18 +10,18 @@ describe('Positions should', () => {
       {
         name: 'Borussia Mönchengladbach',
         editing: true,
-        id: 'BMG'
+        id: 'BMG',
       },
       {
         name: 'Borussia Dortmund',
         editing: true,
-        id: 'BVB'
+        id: 'BVB',
       },
       {
         name: 'FC Bayern München',
         editing: true,
-        id: 'FCB'
-      }
+        id: 'FCB',
+      },
     ];
   });
   it('swap two different teams', () => {
@@ -29,18 +29,18 @@ describe('Positions should', () => {
       {
         name: 'Borussia Mönchengladbach',
         editing: true,
-        id: 'BMG'
+        id: 'BMG',
       },
       {
         name: 'FC Bayern München',
         editing: true,
-        id: 'FCB'
+        id: 'FCB',
       },
       {
         name: 'Borussia Dortmund',
         editing: true,
-        id: 'BVB'
-      }
+        id: 'BVB',
+      },
     ];
 
     const updatedeague = recalculateSwappedPositions(
@@ -54,7 +54,7 @@ describe('Positions should', () => {
     const team = {
       name: 'Borussia Dortmund',
       editing: true,
-      id: 'BVB'
+      id: 'BVB',
     };
     const leagueWithRenamedLeague = recalculatePositionsWithRenamedTeam(
       team,
@@ -66,18 +66,18 @@ describe('Positions should', () => {
       {
         name: 'Borussia Mönchengladbach',
         editing: true,
-        id: 'BMG'
+        id: 'BMG',
       },
       {
         name: 'Schalke 04',
         editing: true,
-        id: 'BVB'
+        id: 'BVB',
       },
       {
         name: 'FC Bayern München',
         editing: true,
-        id: 'FCB'
-      }
+        id: 'FCB',
+      },
     ];
     expect(leagueWithRenamedLeague).toEqual(expectedLeagueState);
   });

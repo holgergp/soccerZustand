@@ -1,10 +1,10 @@
 const findTeamRank = (teamId, positions) => {
-  const zeroBasedIndex = positions.findIndex(team => team.id === teamId);
+  const zeroBasedIndex = positions.findIndex((team) => team.id === teamId);
   return zeroBasedIndex + 1;
 };
 
 const findTeam = (teamId, positions) => {
-  return positions.find(team => team.id === teamId);
+  return positions.find((team) => team.id === teamId);
 };
 
 export const recalculateSwappedPositions = (
