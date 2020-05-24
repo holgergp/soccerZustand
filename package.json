@@ -35,12 +35,12 @@
   "devDependencies": {
     "cypress": "3.3.0",
     "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-react-hooks": "^1.6.0",
     "eslint-plugin-babel": "^5.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^22.16.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "gh-pages": "^2.0.0"
   },
   "husky": {
@@ -55,8 +55,10 @@
     ]
   },
   "jest": {
-    "transformIgnorePatterns": ["node_modules/(?!(react-dnd|dnd-core|react-dnd-html5-backend)/)"],
-    "moduleNameMapper":{
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-dnd|dnd-core|react-dnd-html5-backend)/)"
+    ],
+    "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "identity-obj-proxy",
       "\\.(gif|ttf|eot|svg)$": "identity-obj-proxy"
     }

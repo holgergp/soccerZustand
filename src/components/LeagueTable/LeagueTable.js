@@ -9,26 +9,19 @@ import {
 } from './Positions';
 import { SAMPLE_LEAGUE_TABLE } from './SampleData';
 import { Card, Col } from 'react-bootstrap';
-import { useLocalStorage } from '../../hooks/UseLocalStorage';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const LeagueTable = () => {
   const defaultState = {
     positions: SAMPLE_LEAGUE_TABLE
   };
 
-  const getInitialState = () => {
-    if (_.isUndefined(localStorage.state)) {
-      return defaultState;
-    }
-    const localstate = JSON.parse(localStorage.state);
+  const [storedState, setStoredState] = useLocalStorage(
+    'LEAGUE_TABLE',
+    defaultState
+  );
 
-    if (_.isUndefined(localstate)) {
-      return defaultState;
-    }
-    return localstate;
-  };
-
-  const [positions, setPositions] = useState(getInitialState().positions);
+  const [positions, setPositions] = useState(storedState.positions);
 
   const swapPositions = (sourceTeamId, targetTeamId) => {
     setPositions(
@@ -43,8 +36,7 @@ const LeagueTable = () => {
   };
 
   useEffect(() => {
-    //unused params prevProps and prevState
-    localStorage.state = JSON.stringify({ positions });
+    setStoredState({ positions });
   });
 
   const positionNodes = positions.map((team, index) => (
