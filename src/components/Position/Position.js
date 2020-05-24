@@ -1,8 +1,8 @@
 import React from 'react';
 import { DropTarget } from 'react-dnd';
-import Team from './Team';
+import Team from '../Team/Team';
 import PropTypes from 'prop-types';
-import { ItemTypes } from '../constants/DndItemTypes';
+import { ItemTypes } from '../../DndItemTypes';
 
 const positionTarget = {
   drop(props) {

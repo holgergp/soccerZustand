@@ -14,6 +14,7 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:jest/recommended",
+    "plugin:cypress/recommended",
     "plugin:prettier/recommended"
   ],
   "plugins": [
@@ -21,6 +22,7 @@
     "import",
     "react",
     "jest",
+    "cypress",
     "react-hooks",
     "prettier"
   ],
@@ -239,7 +241,7 @@
       }
     ],
     "no-console": [
-      "error",
+      "warn",
       {
         "allow": [
           "info"

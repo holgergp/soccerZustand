@@ -1,4 +1,4 @@
-exports.SAMPLE_LEAGUE_TABLE = [
+export const SAMPLE_LEAGUE_TABLE = [
   {
     name: 'Borussia Mönchengladbach',
     editing: true,

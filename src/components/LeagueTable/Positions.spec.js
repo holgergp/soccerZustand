@@ -1,4 +1,7 @@
-import Positions from './Positions';
+import {
+  recalculateSwappedPositions,
+  recalculatePositionsWithRenamedTeam
+} from './Positions';
 
 describe('Positions should', () => {
   let sampleLeague;
@@ -40,7 +43,7 @@ describe('Positions should', () => {
       }
     ];
 
-    const updatedeague = Positions.recalculateSwappedPositions(
+    const updatedeague = recalculateSwappedPositions(
       'BVB',
       'FCB',
       sampleLeague
@@ -53,7 +56,7 @@ describe('Positions should', () => {
       editing: true,
       id: 'BVB'
     };
-    const leagueWithRenamedLeague = Positions.recalculatePositionsWithRenamedTeam(
+    const leagueWithRenamedLeague = recalculatePositionsWithRenamedTeam(
       team,
       'Schalke 04',
       sampleLeague
