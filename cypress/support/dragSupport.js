@@ -10,7 +10,7 @@ DndSimulatorDataTransfer.prototype.files = [];
 DndSimulatorDataTransfer.prototype.items = [];
 DndSimulatorDataTransfer.prototype.types = [];
 
-DndSimulatorDataTransfer.prototype.clearData = function(format) {
+DndSimulatorDataTransfer.prototype.clearData = function (format) {
   if (format) {
     delete this.data[format];
     const index = this.types.indexOf(format);
@@ -21,13 +21,13 @@ DndSimulatorDataTransfer.prototype.clearData = function(format) {
   }
 };
 
-DndSimulatorDataTransfer.prototype.setData = function(format, data) {
+DndSimulatorDataTransfer.prototype.setData = function (format, data) {
   this.data[format] = data;
   this.items.push(data);
   this.types.push(format);
 };
 
-DndSimulatorDataTransfer.prototype.getData = function(format) {
+DndSimulatorDataTransfer.prototype.getData = function (format) {
   if (format in this.data) {
     return this.data[format];
   }
@@ -35,7 +35,7 @@ DndSimulatorDataTransfer.prototype.getData = function(format) {
   return '';
 };
 
-DndSimulatorDataTransfer.prototype.setDragImage = function() {
+DndSimulatorDataTransfer.prototype.setDragImage = function () {
   // since simulation doesn"t replicate the visual
   // effects, there is no point in implementing this
 };

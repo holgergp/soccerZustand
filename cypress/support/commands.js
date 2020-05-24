@@ -27,7 +27,7 @@ const dataTransfer = require('./dragSupport');
 Cypress.Commands.add(
   'drag',
   {
-    prevSubject: 'element'
+    prevSubject: 'element',
   },
   (sourceSelector, targetSelector) => {
     cy.wrap(sourceSelector.get(0))

@@ -20,17 +20,17 @@ const teamSource = {
     const sourceTeam = monitor.getItem();
     const targetTeam = monitor.getDropResult();
     props.swapPositions(sourceTeam.sourceId, targetTeam.id);
-  }
+  },
 };
 
 const collect = (connect, monitor) => {
   return {
     connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
   };
 };
 
-const calculatePositionCssClass = positionNumber => {
+const calculatePositionCssClass = (positionNumber) => {
   if (positionNumber === 1) {
     return 'tabellenfuehrerClass tabelleClass';
   }
@@ -50,7 +50,7 @@ const calculatePositionCssClass = positionNumber => {
   }
 };
 
-const Team = props => {
+const Team = (props) => {
   const { rank, team, updateTeamname } = props;
   // These two props are injected by React DnD,
   // as defined by your `collect` function above:
@@ -62,7 +62,7 @@ const Team = props => {
     calculatePositionCssClass(rank)
   );
 
-  const onChange = evt => {
+  const onChange = (evt) => {
     updateTeamname(team, evt.target.value);
   };
 
@@ -87,7 +87,7 @@ Team.propTypes = {
 
   // Injected by React DnD:
   team: PropTypes.object.isRequired,
-  updateTeamname: PropTypes.func.isRequired
+  updateTeamname: PropTypes.func.isRequired,
 };
 
 export default DragSource(ItemTypes.TEAM, teamSource, collect)(Team);
