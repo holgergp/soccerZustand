@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { Row, Container } from 'react-bootstrap';
-import LeagueTable from './LeagueTable';
+import LeagueTable from './LeagueTable/LeagueTable';
 
 const App = () => {
   return (

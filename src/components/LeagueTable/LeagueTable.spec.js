@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import './setupEnzymeTests';
+import '../setupEnzymeTests';
 import LeagueTable from './LeagueTable';
-import Team from './Team';
-import './localstorageMock';
+import Team from '../Team/Team';
+import '../localstorageMock';
 
 describe('League Table should', () => {
   it('render 18 clubs', () => {
