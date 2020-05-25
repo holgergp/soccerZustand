@@ -1,34 +1,9 @@
-import { DragSource } from 'react-dnd';
+import { useDrag } from 'react-dnd';
 import React from 'react';
 import { ItemTypes } from '../../DndItemTypes';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ContentEditable from 'react-contenteditable';
-
-const teamSource = {
-  beginDrag(props) {
-    // Return the data describing the dragged item
-    return { sourceId: props.team.id };
-  },
-
-  endDrag(props, monitor) {
-    if (!monitor.didDrop()) {
-      return;
-    }
-
-    // When dropped on a compatible target, do something
-    const sourceTeam = monitor.getItem();
-    const targetTeam = monitor.getDropResult();
-    props.swapPositions(sourceTeam.sourceId, targetTeam.id);
-  },
-};
-
-const collect = (connect, monitor) => {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-  };
-};
 
 const calculatePositionCssClass = (positionNumber) => {
   if (positionNumber === 1) {
@@ -51,10 +26,25 @@ const calculatePositionCssClass = (positionNumber) => {
 };
 
 const Team = (props) => {
+  const end = (item, monitor) => {
+    if (!monitor.didDrop()) {
+      return;
+    }
+    // When dropped on a compatible target, do something
+    const sourceTeam = monitor.getItem();
+    const dropResult = monitor.getDropResult();
+    props.swapPositions(sourceTeam.team.id, dropResult.team.id);
+  };
+
   const { rank, team, updateTeamname } = props;
   // These two props are injected by React DnD,
   // as defined by your `collect` function above:
-  const { connectDragSource } = props;
+
+  const dragReturn = useDrag({
+    item: { team, type: ItemTypes.TEAM },
+    end,
+  });
+
   const classes = classNames(
     'col-md-12',
     'btn',
@@ -66,8 +56,8 @@ const Team = (props) => {
     updateTeamname(team, evt.target.value);
   };
 
-  return connectDragSource(
-    <div className={classes} style={{ cursor: 'pointer' }}>
+  return (
+    <div className={classes} style={{ cursor: 'pointer' }} ref={dragReturn[1]}>
       <ContentEditable
         onChange={onChange}
         className="textPointer"
@@ -81,8 +71,6 @@ const Team = (props) => {
 };
 
 Team.propTypes = {
-  connectDragSource: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired,
   rank: PropTypes.number.isRequired,
 
   // Injected by React DnD:
@@ -90,4 +78,4 @@ Team.propTypes = {
   updateTeamname: PropTypes.func.isRequired,
 };
 
-export default DragSource(ItemTypes.TEAM, teamSource, collect)(Team);
+export default Team;
