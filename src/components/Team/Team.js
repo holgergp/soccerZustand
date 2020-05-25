@@ -30,9 +30,9 @@ const Team = (props) => {
     if (!monitor.didDrop()) {
       return;
     }
-    const sourceTeam = monitor.getItem();
+    const dragItem = monitor.getItem();
     const dropResult = monitor.getDropResult();
-    props.swapPositions(sourceTeam.team.id, dropResult.team.id);
+    props.swapPositions(dragItem.team.id, dropResult.team.id);
   };
 
   const { rank, team, updateTeamname } = props;
