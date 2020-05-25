@@ -1,6 +1,7 @@
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/holgergp/soccerReact16) 
 
 [![Build Status Travis](https://travis-ci.org/holgergp/soccerReact16.svg?branch=master)](https://travis-ci.org/holgergp/soccerReact16)
+![Node.js CI](https://github.com/holgergp/soccerReact16/workflows/Node.js%20CI/badge.svg)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/holgergp/soccerReact16/badge.svg)](https://snyk.io/test/github/holgergp/soccerReact16)
 [![codecov](https://codecov.io/gh/holgergp/soccerReact16/branch/master/graph/badge.svg)](https://codecov.io/gh/holgergp/soccerReact16)
