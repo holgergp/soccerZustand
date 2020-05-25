@@ -26,20 +26,18 @@ const calculatePositionCssClass = (positionNumber) => {
 };
 
 const Team = (props) => {
-  const end = (item, monitor) => {
-    if (!monitor.didDrop()) {
-      return;
-    }
-    const dragItem = monitor.getItem();
-    const dropResult = monitor.getDropResult();
-    props.swapPositions(dragItem.team.id, dropResult.team.id);
-  };
-
   const { rank, team, updateTeamname } = props;
 
   const dragReturn = useDrag({
     item: { team, type: ItemTypes.TEAM },
-    end,
+    end: (item, monitor) => {
+      if (!monitor.didDrop()) {
+        return;
+      }
+      const dragItem = monitor.getItem();
+      const dropResult = monitor.getDropResult();
+      props.swapPositions(dragItem.team.id, dropResult.team.id);
+    },
   });
 
   const classes = classNames(

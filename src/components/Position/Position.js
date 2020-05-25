@@ -9,11 +9,9 @@ const Position = (props) => {
   const rank = props.rank;
   const updateTeamname = props.updateTeamname;
   const swapPositions = props.swapPositions;
-  const drop = () => ({ team });
-
   const dropReturn = useDrop({
     accept: ItemTypes.TEAM,
-    drop,
+    drop: () => ({ team }),
   });
   return (
     <div ref={dropReturn[1]}>
