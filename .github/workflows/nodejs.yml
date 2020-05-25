@@ -19,15 +19,23 @@ jobs:
         node-version: [10.x]
 
     steps:
-      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup project
       - run: yarn install --frozen-lockfile
-      - run: yarn global add codecov
       - run: yarn run build --if-present
-      - run: yarn start &
+
+      - name: Unit Tests
       - run: yarn test
-      - run: yarn cypress:run:record
-      - run: codecov
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          record: true
+          start: yarn start
