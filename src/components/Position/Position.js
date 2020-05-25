@@ -9,9 +9,7 @@ const Position = (props) => {
   const rank = props.rank;
   const updateTeamname = props.updateTeamname;
   const swapPositions = props.swapPositions;
-  const drop = () => {
-    return { team: props.team };
-  };
+  const drop = () => ({ team });
 
   const dropReturn = useDrop({
     accept: ItemTypes.TEAM,

@@ -30,15 +30,12 @@ const Team = (props) => {
     if (!monitor.didDrop()) {
       return;
     }
-    // When dropped on a compatible target, do something
     const sourceTeam = monitor.getItem();
     const dropResult = monitor.getDropResult();
     props.swapPositions(sourceTeam.team.id, dropResult.team.id);
   };
 
   const { rank, team, updateTeamname } = props;
-  // These two props are injected by React DnD,
-  // as defined by your `collect` function above:
 
   const dragReturn = useDrag({
     item: { team, type: ItemTypes.TEAM },
@@ -72,8 +69,6 @@ const Team = (props) => {
 
 Team.propTypes = {
   rank: PropTypes.number.isRequired,
-
-  // Injected by React DnD:
   team: PropTypes.object.isRequired,
   updateTeamname: PropTypes.func.isRequired,
 };
