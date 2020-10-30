@@ -6,7 +6,7 @@
   "dependencies": {
     "bootstrap": "^4.5.3",
     "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.5.0",
     "prettier": "^2.0.5",
