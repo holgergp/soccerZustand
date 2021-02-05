@@ -69,6 +69,7 @@ Team.propTypes = {
   rank: PropTypes.number.isRequired,
   team: PropTypes.object.isRequired,
   updateTeamname: PropTypes.func.isRequired,
+  swapPositions: PropTypes.func.isRequired,
 };
 
 export default Team;
