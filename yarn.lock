@@ -10275,10 +10275,10 @@ react-dnd-html5-backend@^12.1.0:
   dependencies:
     dnd-core "12.0.1"
 
-react-dnd@^13.1.0:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-13.1.0.tgz#ab9c181d26b6c22f4e6db43edf6cf9d2bf64f115"
-  integrity sha512-FSocIt/13RdcVqlMRCKmJWATOeRvp3i8SS+LdMkTZIrWplFkqsqutW83NVn5WxL7eYifGD+9VRE/m6Q+aUEDVA==
+react-dnd@^13.1.1:
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-13.1.1.tgz#ea6d3f15cccf542a3ebfb978c097b2e3b1d1c962"
+  integrity sha512-oxQW8846omV1l3Pm2zY/atvNxryx+blW1rxnSmoGvFMgmxXpOHulaXrlXgxRH+OLRvLt2cfVTSxZ4ykbzBypaw==
   dependencies:
     "@react-dnd/invariant" "^2.0.0"
     "@react-dnd/shallowequal" "^2.0.0"
