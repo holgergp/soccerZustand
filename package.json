@@ -9,14 +9,14 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "husky": "^5.1.1",
     "prettier": "^2.2.1",
-    "lint-staged": "^10.5.4",
     "react": "^16.14.0",
     "react-bootstrap": "^1.5.0",
     "react-contenteditable": "^3.3.5",
     "react-dnd": "^13.1.1",
     "react-dnd-html5-backend": "^12.1.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "4.0.2"
+    "react-scripts": "4.0.2",
+    "yarn-run-all": "^3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,7 +29,10 @@
     "cypress:run": "cypress run",
     "cypress:run:record": "cypress run --record --key f9a14ac8-4663-47e2-b669-a1d1be9626b4",
     "lint": "node_modules/.bin/eslint ./ --ext .js,.jsx",
-    "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"+(src|cypress)/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"+(src|cypress)/**/*.{js,jsx,json,css,scss,md}\"",
+    "prettier-check": "prettier --single-quote --check \"+(src|cypress)/**/*.{js,jsx,json,css,scss,md}\"",
+    "check": "run-s prettier-check lint test",
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "cypress": "6.5.0",
@@ -41,6 +44,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "lint-staged": "^10.5.4",
     "gh-pages": "^3.1.0"
   },
   "husky": {
