@@ -29,7 +29,8 @@ const Team = (props) => {
   const { rank, team, updateTeamname } = props;
 
   const dragReturn = useDrag({
-    item: { team, type: ItemTypes.TEAM },
+    type: ItemTypes.TEAM,
+    item: { team },
     end: (item, monitor) => {
       if (!monitor.didDrop()) {
         return;

@@ -12,7 +12,7 @@
     "react": "^16.14.0",
     "react-bootstrap": "^1.5.1",
     "react-contenteditable": "^3.3.5",
-    "react-dnd": "^13.1.1",
+    "react-dnd": "^14.0.1",
     "react-dnd-html5-backend": "^14.0.0",
     "react-dom": "^16.14.0",
     "react-scripts": "4.0.3",
