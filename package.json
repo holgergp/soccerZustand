@@ -6,15 +6,14 @@
   "dependencies": {
     "bootstrap": "^4.6.0",
     "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.15.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "husky": "^7.0.4",
     "prettier": "^2.4.1",
-    "react": "^16.14.0",
     "react-bootstrap": "^2.0.2",
     "react-contenteditable": "^3.3.6",
     "react-dnd": "^14.0.4",
     "react-dnd-html5-backend": "^14.0.2",
-    "react-dom": "^16.14.0",
     "react-scripts": "4.0.3",
     "yarn-run-all": "^3.1.1"
   },
@@ -35,6 +34,7 @@
     "postinstall": "husky install"
   },
   "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "cypress": "9.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-babel": "^5.3.1",
