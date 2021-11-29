@@ -1,28 +1,28 @@
-const findTeamRank = (teamId, positions) => {
-  const zeroBasedIndex = positions.findIndex((team) => team.id === teamId);
-  return zeroBasedIndex + 1;
-};
+const findTeamIndex = (teamId, positions) =>
+  positions.findIndex((team) => team.id === teamId);
 
-const findTeam = (teamId, positions) => {
-  return positions.find((team) => team.id === teamId);
-};
+const findTeam = (teamId, positions) =>
+  positions.find((team) => team.id === teamId);
 
 export const recalculateSwappedPositions = (
   sourceTeamId,
   targetTeamId,
   currentPositions
 ) => {
-  const clonedPositions = currentPositions.slice();
+  const clonedPositions = [...currentPositions];
 
-  const sourceRank = findTeamRank(sourceTeamId, clonedPositions);
-  const targetRank = findTeamRank(targetTeamId, clonedPositions);
+  const [sourceInfo, targetInfo] = [sourceTeamId, targetTeamId].map((id) => ({
+    index: findTeamIndex(id, clonedPositions),
+    team: findTeam(id, clonedPositions),
+  }));
 
-  const sourceTeam = findTeam(sourceTeamId, clonedPositions);
-  const targetTeam = findTeam(targetTeamId, clonedPositions);
-
-  clonedPositions[targetRank - 1] = sourceTeam;
-  clonedPositions[sourceRank - 1] = targetTeam;
-  return clonedPositions;
+  return currentPositions.map((pos, index) => {
+    if (index === targetInfo.index) {
+      return { ...sourceInfo.team };
+    } else if (index === sourceInfo.index) {
+      return { ...targetInfo.team };
+    } else return { ...pos };
+  });
 };
 
 export const recalculatePositionsWithRenamedTeam = (
@@ -30,12 +30,10 @@ export const recalculatePositionsWithRenamedTeam = (
   updatedText,
   currentPositions
 ) => {
-  const clonedPositions = currentPositions.slice();
+  const teamIndex = findTeamIndex(team.id, currentPositions);
 
-  const teamRank = findTeamRank(team.id, clonedPositions);
-
-  team.name = updatedText;
-
-  clonedPositions[teamRank - 1] = team;
-  return clonedPositions;
+  return currentPositions.map((pos, index) => ({
+    ...pos,
+    name: teamIndex === index ? updatedText : pos.name,
+  }));
 };

@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Position from '../Position/Position';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import {
-  recalculateSwappedPositions,
   recalculatePositionsWithRenamedTeam,
+  recalculateSwappedPositions,
 } from './Positions';
 import { SAMPLE_LEAGUE_TABLE } from './SampleData';
 import { Card, Col } from 'react-bootstrap';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useQuery } from 'react-query';
+import { getSampleData } from '../../api/leagueTableApi';
 
 const LeagueTable = () => {
-  const [storedState, setStoredState] = useLocalStorage(
-    'LEAGUE_TABLE',
-    SAMPLE_LEAGUE_TABLE
-  );
+  const [positions, setPositions] = useState(SAMPLE_LEAGUE_TABLE);
+  const { isLoading, error } = useQuery('sampleData', getSampleData, {
+    onSuccess: setPositions,
+  });
+  if (isLoading) {
+    return 'Loading...';
+  }
 
-  const [positions, setPositions] = useState(storedState);
+  if (error) {
+    return 'An error has occurred: ' + error.message;
+  }
 
   const swapPositions = (sourceTeamId, targetTeamId) => {
     setPositions(
@@ -30,20 +36,6 @@ const LeagueTable = () => {
     );
   };
 
-  useEffect(() => {
-    setStoredState(positions);
-  });
-
-  const positionNodes = positions.map((team, index) => (
-    <Position
-      team={team}
-      rank={index + 1}
-      key={index}
-      swapPositions={swapPositions}
-      updateTeamname={updateTeamname}
-    />
-  ));
-
   return (
     <DndProvider backend={HTML5Backend}>
       <Col md={6}>
@@ -51,7 +43,17 @@ const LeagueTable = () => {
           <Card.Header>
             <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
           </Card.Header>
-          <Card.Body>{positionNodes}</Card.Body>
+          <Card.Body>
+            {positions.map((team, index) => (
+              <Position
+                team={team}
+                rank={index + 1}
+                key={index}
+                swapPositions={swapPositions}
+                updateTeamname={updateTeamname}
+              />
+            ))}
+          </Card.Body>
         </Card>
       </Col>
     </DndProvider>

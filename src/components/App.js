@@ -3,13 +3,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { Row, Container } from 'react-bootstrap';
 import LeagueTable from './LeagueTable/LeagueTable';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <div className="index">
       <Container>
         <Row>
-          <LeagueTable />
+          <QueryClientProvider client={queryClient}>
+            <LeagueTable />
+          </QueryClientProvider>
         </Row>
       </Container>
     </div>
