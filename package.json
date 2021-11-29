@@ -1,8 +1,8 @@
 {
-  "name": "soccerreact16",
+  "name": "soccerreactquery",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://holgergp.github.io/soccerReact16",
+  "homepage": "https://holgergp.github.io/soccerReactQuery",
   "dependencies": {
     "bootstrap": "^4.6.0",
     "enzyme": "^3.6.0",
