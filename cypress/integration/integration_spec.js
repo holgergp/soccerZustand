@@ -1,6 +1,7 @@
 describe('Webapp visible', () => {
   beforeEach(() => {
     cy.visit('/');
+    cy.get('.card-header');
   });
   it('Change Teamname', () => {
     const firstTeamSelector = ':nth-child(1)  > .col-md-12 > .textPointer';
