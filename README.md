@@ -14,3 +14,5 @@ See the result in your Browser: http://localhost:3000
 Run the tests with `npm run test`.
 
 You can play with it under the projects GH-Page [here](https://holgergp.github.io/soccerReactQuery/)
+
+The backend for this repo was done using [Darklang](https://darklang.com/). For now it consists of [this](https://holgergp.builtwithdark.com/league-table) api call.
