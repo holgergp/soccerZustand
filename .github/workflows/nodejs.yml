@@ -60,4 +60,4 @@ jobs:
         with:
           name: cypress-test-screenshots
           path: |
-                cypress/screenshots/*.png
+                cypress/screenshots/
