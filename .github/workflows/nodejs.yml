@@ -39,7 +39,7 @@ jobs:
       - name: Cypress Tests
         uses: cypress-io/github-action@v2
         with:
-          record: true
+          record: false
           start: npm run start
         env:
           # pass the Dashboard record key as an environment variable
