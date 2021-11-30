@@ -47,6 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Archive test videos
+        if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: cypress-test-videos
@@ -54,6 +55,7 @@ jobs:
                 cypress/videos/*.mp4
 
       - name: Archive test screenshots
+        if: failure()
         uses: actions/upload-artifact@v2
         with:
           name: cypress-test-screenshots
