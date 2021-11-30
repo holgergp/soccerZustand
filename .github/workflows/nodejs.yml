@@ -45,3 +45,17 @@ jobs:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Archive test videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-test-videos
+          path: |
+                cypress/videos/*.mp4
+
+      - name: Archive test screenshots
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-test-screenshots
+          path: |
+                cypress/screenshots/*.png
