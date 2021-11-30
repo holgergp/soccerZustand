@@ -13,9 +13,10 @@ import { getSampleData } from '../../api/leagueTableApi';
 
 const LeagueTable = () => {
   const [positions, setPositions] = useState(SAMPLE_LEAGUE_TABLE);
-  const { isLoading, error } = useQuery('sampleData', getSampleData, {
+  const { isLoading, error, data } = useQuery('sampleData', getSampleData, {
     onSuccess: setPositions,
   });
+  console.log('Render', data);
   if (isLoading) {
     return 'Loading...';
   }
@@ -40,7 +41,7 @@ const LeagueTable = () => {
     <DndProvider backend={HTML5Backend}>
       <Col md={6}>
         <Card bg="dark">
-          <Card.Header>
+          <Card.Header role={'heading'}>
             <Card.Title>Ligatabelle zum Selberstecken</Card.Title>
           </Card.Header>
           <Card.Body>

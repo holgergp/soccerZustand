@@ -56,6 +56,7 @@ const Team = (props) => {
     <div className={classes} style={{ cursor: 'pointer' }} ref={dragReturn[1]}>
       <ContentEditable
         onChange={onChange}
+        role={'button'}
         className="textPointer"
         html={team.name}
         autoFocus={true}
