@@ -13,10 +13,9 @@ import { getSampleData } from '../../api/leagueTableApi';
 
 const LeagueTable = () => {
   const [positions, setPositions] = useState(SAMPLE_LEAGUE_TABLE);
-  const { isLoading, error, data } = useQuery('sampleData', getSampleData, {
+  const { isLoading, error } = useQuery('sampleData', getSampleData, {
     onSuccess: setPositions,
   });
-  console.log('Render', data);
   if (isLoading) {
     return 'Loading...';
   }
