@@ -39,7 +39,6 @@ const Team = (props) => {
       }
       const dragItem = monitor.getItem();
       const dropResult = monitor.getDropResult();
-      console.log('swapPositions', swapPositions);
       swapPositions({
         sourceTeamId: dragItem.team.id,
         targetTeamId: dropResult.team.id,

@@ -3,13 +3,12 @@ import Position from '../Position/Position';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Card, Col } from 'react-bootstrap';
-import { useQuery } from 'react-query';
-import { getSampleData } from '../../api/leagueTableApi';
 import { useStore } from '../../zustand/store';
 
 const LeagueTable = () => {
   const positions = useStore((state) => state.positions);
-  const { isLoading, error } = useQuery('sampleData', getSampleData, {
+  /**
+   const { isLoading, error } = useQuery('sampleData', getSampleData, {
     onSuccess: (data) => useStore.setState({ positions: [...data] }),
   });
 
@@ -20,7 +19,7 @@ const LeagueTable = () => {
   if (error) {
     return 'An error has occurred: ' + error.message;
   }
-
+  **/
   return (
     <DndProvider backend={HTML5Backend}>
       <Col md={6}>

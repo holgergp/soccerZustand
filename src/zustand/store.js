@@ -5,6 +5,7 @@ import {
 import create from 'zustand';
 import { SAMPLE_LEAGUE_TABLE } from '../components/LeagueTable/SampleData';
 import { devtools } from 'zustand/middleware';
+import { getSampleData } from '../api/leagueTableApi';
 
 const initialState = {
   positions: SAMPLE_LEAGUE_TABLE,
@@ -14,8 +15,11 @@ const initialState = {
 export const useStore = create(
   devtools((set) => ({
     ...initialState,
+    loadPositions: async () => {
+      const positions = await getSampleData();
+      set(() => ({ positions }));
+    },
     swapPositions: (action) => {
-      console.log('action', action);
       set((state) => ({
         positions: recalculateSwappedPositions(
           action.sourceTeamId,
