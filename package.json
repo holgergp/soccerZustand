@@ -1,8 +1,8 @@
 {
-  "name": "soccerreactquery",
+  "name": "soccerzustand",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://holgergp.github.io/soccerReactQuery",
+  "homepage": "https://holgergp.github.io/soccerZustand",
   "dependencies": {
     "bootstrap": "^4.6.0",
     "enzyme": "^3.6.0",
@@ -16,7 +16,8 @@
     "react-dnd-html5-backend": "^14.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.33.7",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "zustand": "^3.6.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +28,7 @@
     "deploy": "gh-pages -d build",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:run:record": "cypress run --record --key fa37b339-0b3e-4d9f-9777-e5e89e8e9de2",
+    "cypress:run:record": "cypress run --record --key 6ef37dae-ea8c-4bf8-a396-1612fc705e05",
     "lint": "node_modules/.bin/eslint ./ --ext .js,.jsx",
     "lint:fix": "./node_modules/.bin/prettier --single-quote --write \"+(src|cypress)/**/*.{js,jsx,json,css,scss,md}\"",
     "prettier-check": "prettier --single-quote --check \"+(src|cypress)/**/*.{js,jsx,json,css,scss,md}\"",
