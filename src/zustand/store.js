@@ -3,20 +3,17 @@ import {
   recalculateSwappedPositions,
 } from '../components/LeagueTable/Positions';
 import create from 'zustand';
-import { SAMPLE_LEAGUE_TABLE } from '../components/LeagueTable/SampleData';
 import { devtools } from 'zustand/middleware';
-import { getSampleData } from '../api/leagueTableApi';
 
 const initialState = {
-  positions: SAMPLE_LEAGUE_TABLE,
+  positions: undefined,
   loadingCompleted: false,
 };
 
 export const useStore = create(
   devtools((set) => ({
     ...initialState,
-    loadPositions: async () => {
-      const positions = await getSampleData();
+    setPositions: (positions) => {
       set(() => ({ positions }));
     },
     swapPositions: (action) => {
