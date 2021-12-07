@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/holgergp/soccerZustand/branch/main/graph/badge.svg)](https://codecov.io/gh/holgergp/soccerZustand)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8eee079e61834ccfb8f92a02f705ee09)](https://app.codacy.com/app/holgergp/soccerZustand?utm_source=github.com&utm_medium=referral&utm_content=holgergp/soccerZustand&utm_campaign=Badge_Grade_Dashboard)
 
-This is an addition to [SoccerReact16](https://github.com/holgergp/soccerReact16) using ReactQuery.
+This is an addition to [SoccerReact16](https://github.com/holgergp/soccerReact16) using Zustand and ReactQuery.
 
 I've used Node 16.x while developing this.
 Install dependencies with `npm install`.
