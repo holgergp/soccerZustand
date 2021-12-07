@@ -1,6 +1,6 @@
 describe('Webapp visible', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/', {timeout: 120000});
     cy.get('.card-header');
   });
   it('Change Teamname', () => {
