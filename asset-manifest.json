@@ -5,17 +5,17 @@
     "main.js.map": "/soccerZustand/static/js/main.5325a9b7.chunk.js.map",
     "runtime-main.js": "/soccerZustand/static/js/runtime-main.810cddbe.js",
     "runtime-main.js.map": "/soccerZustand/static/js/runtime-main.810cddbe.js.map",
-    "static/css/2.de151cb5.chunk.css": "/soccerZustand/static/css/2.de151cb5.chunk.css",
+    "static/css/2.9ec07ce6.chunk.css": "/soccerZustand/static/css/2.9ec07ce6.chunk.css",
     "static/js/2.c4612e76.chunk.js": "/soccerZustand/static/js/2.c4612e76.chunk.js",
     "static/js/2.c4612e76.chunk.js.map": "/soccerZustand/static/js/2.c4612e76.chunk.js.map",
     "index.html": "/soccerZustand/index.html",
-    "static/css/2.de151cb5.chunk.css.map": "/soccerZustand/static/css/2.de151cb5.chunk.css.map",
+    "static/css/2.9ec07ce6.chunk.css.map": "/soccerZustand/static/css/2.9ec07ce6.chunk.css.map",
     "static/css/main.34fbd58d.chunk.css.map": "/soccerZustand/static/css/main.34fbd58d.chunk.css.map",
     "static/js/2.c4612e76.chunk.js.LICENSE.txt": "/soccerZustand/static/js/2.c4612e76.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.810cddbe.js",
-    "static/css/2.de151cb5.chunk.css",
+    "static/css/2.9ec07ce6.chunk.css",
     "static/js/2.c4612e76.chunk.js",
     "static/css/main.34fbd58d.chunk.css",
     "static/js/main.5325a9b7.chunk.js"
